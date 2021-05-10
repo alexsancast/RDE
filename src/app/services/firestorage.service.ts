@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreCollection, AngularFirestore} from '@angular/fire/firestore'
-import {Productos} from '../module/prodcutos.interface'
+import {Productos} from 'src/app/module/productos.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,8 @@ export class FirestorageService {
  getId(){
    return this.db.createId()
  }
+
+
 getColletion<tipo>(path:string){
   const collection = this.db.collection<tipo>(path);
   return collection.valueChanges();

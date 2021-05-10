@@ -13,11 +13,22 @@ export class FireauthService {
 
   constructor(private fauth: AngularFireAuth) { }
 
-   register(username:string , password:string){
+   onRegister(mail:string , password:string){
    
-    const usuario =this.fauth.createUserWithEmailAndPassword(username,password);
+    const usuario =this.fauth.createUserWithEmailAndPassword(mail,password);
     return usuario
    }
+
+
+     async getCurrentAth(){
+        const user = await this.fauth.currentUser
+         if (user === undefined){
+           return null;
+
+         }else {
+           return user.uid;
+         }
+     }
 
    onLogin(user:string,password:string){
      return new  Promise((resolve,rejected)=>{

@@ -1,7 +1,8 @@
 export interface Productos{
-
+    id:string,
     nombre :string,
     precio:number,
-    id_person:string;
+    foto:string,
+    id_person:any;
 
 }

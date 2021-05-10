@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestorageService} from 'src/app/services/firestorage.service';
-import { Productos } from '//home/acastillo/Documents/firebase_login/src/app/module/prodcutos.interface';
+import { Productos } from 'src/app/module/productos.interface';
 
 @Component({
   selector: 'app-productos',

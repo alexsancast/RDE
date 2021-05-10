@@ -10,8 +10,8 @@
 
   <ion-list>
     <ion-item>
-      <ion-label position="floating" >Username</ion-label>
-      <ion-input [(ngModel)]="user.email"  type="text" placeholder="Username"></ion-input>
+      <ion-label position="floating" >Email</ion-label>
+      <ion-input [(ngModel)]="user.email"  type="text" placeholder="Email"></ion-input>
     </ion-item>
 
 
@@ -26,7 +26,7 @@
   <ion-button (click)="login()" expand="full" shape="round">
    Login
   </ion-button>
-  <ion-button [routerLink]="['/home']" expand="full" shape="round">
+  <ion-button [routerLink]="['/register']" expand="full" shape="round">
     Registrar
    </ion-button>
   

@@ -1,7 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FirestorageService} from 'src/app/services/firestorage.service';
-import {Productos} from '//home/acastillo/Documents/firebase_login/src/app/module/prodcutos.interface'
+import {Productos} from 'src/app/module/productos.interface'
+import { LoadingController } from '@ionic/angular';
+import { FireauthService } from 'src/app/services/fireauth.service';
 
 
 
@@ -15,9 +17,11 @@ export class PrincipalPage implements OnInit {
 
    
  productos:Productos={
+   id:this.firestorageService.getId(),
    nombre : '',
    precio:null,
-   id_person : this.firestorageService.getId()
+   foto:'',
+   id_person :''
 
  }
 
@@ -26,16 +30,43 @@ export class PrincipalPage implements OnInit {
    
 
 
-  constructor( public firestorageService:FirestorageService ) { }
+  constructor( public firestorageService:FirestorageService,
+               public loader:LoadingController,
+               public fauth : FireauthService ) { }
 
   ngOnInit() {
+   
+    
+
   }
 
-  uploadP(){
+  async uploadP(){
+  
+    this.loadingUp()
+    
+      this.firestorageService.createDoc(this.productos,this.path,this.productos.id).then(res =>{
+    
+        const uid =  this.fauth.getCurrentAth();
+        this.productos.id_person=uid;
+
+           
+    });
+    
+     
   
     
-    this.firestorageService.createDoc(this.productos,this.path,this.productos.id_person)
+  
 
-  }
+}
 
+ async  loadingUp(){
+     const loder =this.loader.create({
+       message:'Subiendo Productos',
+       duration:7888
+     });
+
+     (await loder).present()
+   }
+     
+   
 }

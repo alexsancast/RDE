@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 
-import {User} from '//home/acastillo/Documents/firebase_login/src/app/module/user.interface'
+import {User} from 'src/app/module/user.interface'
 import { FireauthService } from 'src/app/services/fireauth.service';
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
+
 
 
 @Component({
@@ -73,6 +73,9 @@ export class LoginPage implements OnInit {
      duration:3000
    }).then(res=>res.present());
  }
+
+
+ 
  searchService(prueba:string){
    console.log(prueba);
 
